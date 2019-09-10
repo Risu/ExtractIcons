@@ -1,0 +1,32 @@
+#version 1.0
+#contact: piotr4@gmail.com
+#GPLv3
+
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=application/x-ms-dos-executable;
+Actions=extractIcons;rawExtractIcons;rawExtractIcon
+X-KDE-Submenu=Icons
+X-KDE-StartupNotify=false
+X-KDE-Priority=TopLevel
+
+[Desktop Action extractIcons]
+Name=Extract Group Icons Here
+Icon=dialog-icon-preview
+Exec=bash -c 'type wrestool; if [ $? -eq 0 ]; then wrestool --type=group_icon -o . -x "%u"; else kdialog --title "Package Missing" --error "Please install icoutils from your package manager."; fi;';  
+
+#[Desktop Action extractIcon]
+#Name=Extract Icons Here
+#Icon=dialog-icon-preview
+#Exec=bash -c 'type wrestool; if [ $? -eq 0 ]; then wrestool --type=icon -o . -x "%u"; else kdialog --title "Package Missing" --error "Please install icoutils from your package manager."; fi;';  
+
+[Desktop Action rawExtractIcons]
+Name=Extract Group Raw Icons Here
+Icon=dialog-icon-preview
+Exec=bash -c 'type wrestool; if [ $? -eq 0 ]; then wrestool --type=group_icon -o . -x "%u" --raw; else kdialog --title "Package Missing" --error "Please install icoutils from your package manager."; fi;';  
+
+[Desktop Action rawExtractIcon]
+Name=Extract Raw Icons Here
+Icon=dialog-icon-preview
+Exec=bash -c 'type wrestool; if [ $? -eq 0 ]; then wrestool --type=icon -o . -x "%u" --raw; else kdialog --title "Package Missing" --error "Please install icoutils from your package manager."; fi;';  
